@@ -172,7 +172,10 @@ SVGElement.prototype.toDataURL = function(type, options) {
 		});
 
 		// NOTE: return in addition to callback
-		return canvas.toDataURL(type);
+		dataurl = canvas.toDataURL(type);
+		// Clean up reference to canvas for garbage collection
+		canvas = null
+		return dataurl
 	}
 
 	// BEGIN MAIN
